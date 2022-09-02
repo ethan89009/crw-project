@@ -1,3 +1,5 @@
+import "./categories.styles.scss"
+
 const App = () => {
   return (
     <div className='categories-container'>
