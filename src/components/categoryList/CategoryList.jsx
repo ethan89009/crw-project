@@ -1,9 +1,9 @@
 import React from 'react'
 import "./categories.styles.scss"
 import { CategoryItem } from '../categoryItem/CategoryItem'
-import categories from "../../categories.json"
 
-export const CategoryList = () => {
+
+export const CategoryList = ({categories}) => {
     
   return (
     <div className='categories-container'>
