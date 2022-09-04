@@ -1,9 +1,16 @@
-import { CategoryList } from "./components/categoryList/CategoryList";
-import categories from "./categories.json"
-const App = () => {
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from './routes/home/Home'
+import { Navbar } from './routes/navigation/Navbar'
+export const App = () => {
   return (
-  <CategoryList categories={categories}/>
-  );
-};
+    <Routes>
+      <Route path='/'  element={<Navbar/>}>
+      <Route  index element={<Home/>}/>
+      <Route path='shop' element="Hi i am shop"/>
+      </Route>
+    </Routes>
+  )
+}
 
 export default App;
