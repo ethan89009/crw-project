@@ -61,3 +61,15 @@ export const creatAuthUserWithEmailAndPassword=async(email,password)=>{
   }
 
 }
+export const signInAuthUserWithEmailAndPassword=async(email,password)=>{
+  if(!email||!password){
+    return;
+  }
+  else{
+   
+     const response=await signInWithEmailAndPassword(auth,email,password);
+     return response;
+  
+  }
+
+}
