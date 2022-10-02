@@ -21,7 +21,7 @@ export const SignUpForm = () => {
       password:"",
       confirmPassword:"" 
     })
-  }
+  } 
 
   const {displayName,email,password,confirmPassword}=formField;
   
