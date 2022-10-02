@@ -1,6 +1,7 @@
 import {initializeApp} from "firebase/app";
-import {getAuth , signInWithRedirect, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
+import {getAuth , signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import {doc,getFirestore,getDoc,setDoc} from "firebase/firestore";
+import { signInWithEmailAndPassword ,createUserWithEmailAndPassword} from "firebase/auth";
 const firebaseConfig = {
     apiKey: "AIzaSyAwLO5N7KjuYxqmgWwwBkeosOT8tsyF7k4",
     authDomain: "crwn-project-394c9.firebaseapp.com",
@@ -24,7 +25,7 @@ const firebaseConfig = {
 
   export const db=getFirestore();
 
-  export const creatUserDocumentFromAuth= async (userAuth)=>{
+  export const creatUserDocumentFromAuth= async (userAuth,additionInfo={})=>{
     const userDocRef= doc(db, 'users',userAuth.uid);
     
     const userSnapshot= await getDoc(userDocRef);
@@ -34,10 +35,29 @@ const firebaseConfig = {
         const createdAt=new Date();
 
         try{
-            await setDoc(userDocRef,{displayName,email,createdAt});
+            await setDoc(userDocRef,
+              {displayName,
+                email,
+                createdAt,
+                ...additionInfo
+              });
         }catch(error){
             console.log(error);
         }
     }
     return userDocRef;
+}
+export const creatAuthUserWithEmailAndPassword=async(email,password)=>{
+  if(!email||!password){
+    return;
+  }
+  else{
+    try {
+     const response=await createUserWithEmailAndPassword(auth,email,password);
+     return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 }
