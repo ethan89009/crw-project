@@ -8,7 +8,6 @@ export const Authentication = () => {
 
   return (
     <div className='authentication-container'>
-    
     <SignInForm/>
     <SignUpForm/>
     </div>

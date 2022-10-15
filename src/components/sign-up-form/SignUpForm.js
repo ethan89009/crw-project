@@ -1,8 +1,9 @@
-import React ,{useState} from 'react'
+import React ,{useState, useContext} from 'react'
 import { creatAuthUserWithEmailAndPassword ,creatUserDocumentFromAuth} from '../../utils/firebase/firebase.utils';
 import { FormInput } from '../form-input/FormInput';
 import { Button } from '../button/Button';
 import "./signupform.styles.scss"
+
 
 
 export const SignUpForm = () => {
@@ -30,6 +31,7 @@ export const SignUpForm = () => {
       alert("password doesnt match with confirm password!");
       return;
     }
+    
     e.preventDefault();
     try {
       const {user}=await creatAuthUserWithEmailAndPassword(email,password);

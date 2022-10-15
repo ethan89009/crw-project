@@ -4,7 +4,6 @@ import { FormInput } from '../form-input/FormInput';
 import { Button } from '../button/Button';
 import "./signinform.styles.scss"
 
-
 export const SignInForm = () => {
 
   const [formField,setFormField]=useState({
@@ -21,8 +20,7 @@ export const SignInForm = () => {
   } 
 
   const signInWithGoogle= async ()=>{
-    const {user}=await signInWithGooglePopup();
-    const userDocRef=await creatUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
 }
 
  
@@ -31,8 +29,8 @@ export const SignInForm = () => {
  
     e.preventDefault();
     try {
-      const response=await signInAuthUserWithEmailAndPassword(email,password);
-      console.log(response);
+      const {user}=await signInAuthUserWithEmailAndPassword(email,password);
+      resetFormField();
     } 
     catch (error) {
 
