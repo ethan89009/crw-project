@@ -25,6 +25,7 @@ const firebaseConfig = {
 
   export const db=getFirestore();
 
+
   export const creatUserDocumentFromAuth= async (userAuth,additionInfo={})=>{
     const userDocRef= doc(db, 'users',userAuth.uid);
     
@@ -47,6 +48,9 @@ const firebaseConfig = {
     }
     return userDocRef;
 }
+
+
+
 export const creatAuthUserWithEmailAndPassword=async(email,password)=>{
   if(!email||!password){
     return;
@@ -61,6 +65,9 @@ export const creatAuthUserWithEmailAndPassword=async(email,password)=>{
   }
 
 }
+
+
+
 export const signInAuthUserWithEmailAndPassword=async(email,password)=>{
   if(!email||!password){
     return;
@@ -73,6 +80,10 @@ export const signInAuthUserWithEmailAndPassword=async(email,password)=>{
   }
 
 }
+
+
 export const signOutUser=async ()=>await signOut(auth);
+
+
 
 export const onAuthStateChangedListener=(callback)=>onAuthStateChanged(auth,callback);
