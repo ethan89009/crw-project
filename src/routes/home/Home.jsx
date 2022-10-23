@@ -1,9 +1,9 @@
-import { CategoryList } from "./../../components/categoryList/CategoryList";
 import categories from "./../../categories.json"
+import { Directory } from "../../components/directory/Directory";
 
 const Home = () => {
   return (
-  <CategoryList categories={categories}/>
+  <Directory categories={categories}/>
   );
 };
 
